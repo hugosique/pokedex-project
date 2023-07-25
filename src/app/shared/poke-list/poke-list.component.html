@@ -1,16 +1,19 @@
-<a class="pokemon">
-    <section class="pokemon__status">
-        <h2>
-            Bulbassaur
-        </h2> 
+<ng-template ngFor let-pokemon [ngForOf]="pokemons">
+    <a class="pokemon">
+        <section class="pokemon__status">
+            <h2>
+                {{ pokemon.name | titlecase }}
+            </h2> 
+        
+            <ul *ngFor="let value of pokemon?.status?.types">
+                <li>{{value?.type?.name | titlecase}}</li>
+            </ul>
+        </section>
     
-        <ul>
-            <li>Grass</li>
-            <li>Poison</li>
-        </ul>
-    </section>
-
-    <section class="pokemon_image">
-        <img src="" alt="Bulba">
-    </section>
-</a>
+        <section class="pokemon__image">
+            <img
+            [src]="pokemon?.status?.sprites?.other?.dream_world?.front_default"
+            [alt]="pokemon?.name">
+        </section>
+    </a>
+</ng-template>

@@ -5,6 +5,7 @@ $padding: rem-calc(20);
 :host {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: $padding 0;
     
     .pokemon {
@@ -15,6 +16,8 @@ $padding: rem-calc(20);
         padding: $padding;
         background: var(--white);
         border-radius: rem-calc(10);
+        margin-bottom: rem-calc(10);
+        cursor: pointer;
 
         &__status {
             h2 {
@@ -58,7 +61,7 @@ $padding: rem-calc(20);
             background: url('../../../assets/bg/background-list-pokemons.svg') no-repeat;
 
             img {
-                width: rem-calc(80);
+                width: rem-calc(60);
             }
         }
     }
