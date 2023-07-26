@@ -23,9 +23,9 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getPoke;
+    this.getPoke();
   }
-  get getPoke() {
+  public getPoke() {
     const id = this.activatedRoute.snapshot.params['id'];
     const pokemon = this.pokeApiService.getPokemons(`${this.urlPokemon}/${id}`);
     const name = this.pokeApiService.getPokemons(`${this.urlName}/${id}`);
