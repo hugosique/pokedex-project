@@ -3,7 +3,7 @@
 
 <section class="list">
     <ng-template ngFor let-pokemon [ngForOf]="pokemons">
-        <a [routerLink]="['details', pokemon.status.id]" class="pokemon">
+        <a [routerLink]="['details', pokemon?.status?.id]" class="pokemon">
             <section class="pokemon__status">
                 <h2>
                     {{ pokemon.name | titlecase }}
