@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PokeApiService } from 'src/app/service/poke-api.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class PokeListComponent implements OnInit{
 
   constructor(
     private pokeApiService: PokeApiService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -20,6 +22,9 @@ export class PokeListComponent implements OnInit{
       res => {
         this.setPokemons = res.results;
         this.pokemons = this.setPokemons;
+      },
+      error => {
+        this.router.navigate(['404']);
       }
     );
   }

@@ -1,6 +1,6 @@
 import { PokeApiService } from './../../service/poke-api.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -14,10 +14,12 @@ export class DetailsComponent implements OnInit {
   private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
 
   public pokemon: any
+  public isLoading: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokeApiService: PokeApiService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,10 @@ export class DetailsComponent implements OnInit {
     return forkJoin([pokemon, name]).subscribe(
       (res: any) => {
         this.pokemon = res;
+        this.isLoading = true;
+      },
+      error => {
+        this.router.navigate(['404']);
       }
     )
   }
